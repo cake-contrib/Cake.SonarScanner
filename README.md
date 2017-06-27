@@ -14,3 +14,4 @@ SonarScanner();
 
 [![Build status](https://ci.appveyor.com/api/projects/status/l00o9jw5cxh68255?svg=true)](https://ci.appveyor.com/project/pitermarx/cake-sonarscanner)
 [![NuGet](https://img.shields.io/nuget/v/Cake.SonarScanner.svg)](https://www.nuget.org/packages/Cake.SonarScanner/)
+[![Coverage Status](https://coveralls.io/repos/github/pitermarx/Cake.SonarScanner/badge.svg?branch=master)](https://coveralls.io/github/pitermarx/Cake.SonarScanner?branch=master)
