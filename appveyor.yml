@@ -1,7 +1,8 @@
 environment:
   nuget_api_token:
     secure: 0z9yOFGpfQzF7ZsJqzyLj8ckqPIv5FZ7+2TjiCUVR31ewZ7Ah2reiZ9WMubFXwAb
-    
+  sonar_scanner_token:
+    secure: j37C+cuCWXIWy6s5EsExMaaWFGCa69SUyQ3fgUhqqlK85Wj++dunR6mOUcjn6nI3
 build_script:
   - ps: .\build.ps1
 

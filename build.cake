@@ -4,9 +4,11 @@
 #tool "nuget:?package=OpenCover&version=4.6.519"
 #tool "nuget:?package=coveralls.io&version=1.3.4"
 #addin "nuget:?package=Cake.Coveralls&version=0.4.0"
+//#addin "nuget:?package=Cake.SonarScanner&version=0.1.0"
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
+var sonarScannerToken = EnvironmentVariable("sonar_scanner_token");
 var nugetApiToken = EnvironmentVariable("nuget_api_token");
 var coverallsToken = EnvironmentVariable("coveralls_token");
 
@@ -69,8 +71,21 @@ Task("Test")
     }
 });
 
-Task("Pack")
+Task("Analyse")
     .IsDependentOn("Test")
+    .Does(() => 
+{
+    //  SonarScanner(new SonarScannerSettings {
+    //      Debug = true,
+    //      Properties = new Dictionary<string, string> {
+    //          { "sonar.login", sonarScannerToken },
+    //          { "sonar.projectVersion", version.NuGetVersionV2 }
+    //      }
+    //  })
+});
+
+Task("Pack")
+    .IsDependentOn("Analyse")
     .Does(() =>
 {
     var nuGetPackSettings   = new NuGetPackSettings 
