@@ -5,8 +5,8 @@ Either use [Cake.Chocolatey.Module](https://github.com/gep13/Cake.Chocolatey.Mod
 
 ## Usage
 ```cs
-#tool choco:?package=sonarcube-scanner&version=3.0.3.778
-#addin nuget:?package=Cake.SonarScanner
+#tool "choco:?package=sonarcube-scanner&version=3.0.3.778&include=./**/*.bat"
+#addin "nuget:?package=Cake.SonarScanner"
     
 // Assuming a sonar-scanner.properties on the current directory
 SonarScanner();

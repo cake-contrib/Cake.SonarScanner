@@ -1,4 +1,4 @@
-#tool choco:?package=sonarcube-scanner&version=3.0.3.778
+#tool "choco:?package=sonarcube-scanner&version=3.0.3.778&include=./**/*.bat"
 #tool "nuget:?package=xunit.runner.console&version=2.1.0"
 #tool "nuget:?package=GitVersion.CommandLine&version=3.6.2"
 #tool "nuget:?package=OpenCover&version=4.6.519"
