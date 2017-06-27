@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assemblies>
+  <assembly name="C:\Users\critical\Desktop\Cake.SonarScanner\Cake.SonarScanner.Tests\bin\Release\Cake.SonarScanner.Tests.DLL" environment="64-bit .NET 4.0.30319.42000 [collection-per-class, parallel (4 threads)]" test-framework="xUnit.net 2.2.0.3545" run-date="2017-06-27" run-time="13:43:26" config-file="C:\Users\critical\Desktop\Cake.SonarScanner\tools\xunit.runner.console\tools\xunit.console.exe.Config" total="3" passed="3" failed="0" skipped="0" time="0.502" errors="0">
+    <errors />
+    <collection total="3" passed="3" failed="0" skipped="0" name="Test collection for Cake.SonarScanner.Tests.AddinTests" time="0.227">
+      <test name="Cake.SonarScanner.Tests.AddinTests.NoParameters" type="Cake.SonarScanner.Tests.AddinTests" method="NoParameters" time="0.2097335" result="Pass" />
+      <test name="Cake.SonarScanner.Tests.AddinTests.Parameters" type="Cake.SonarScanner.Tests.AddinTests" method="Parameters" time="0.012682" result="Pass" />
+      <test name="Cake.SonarScanner.Tests.AddinTests.SettingsShouldBeDefined" type="Cake.SonarScanner.Tests.AddinTests" method="SettingsShouldBeDefined" time="0.0049632" result="Pass" />
+    </collection>
+  </assembly>
+</assemblies>

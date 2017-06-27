@@ -48,25 +48,25 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() => 
 {
-    //  OpenCover(tool => 
-    //     tool.XUnit2("./**/bin/**/*.Tests.dll", new XUnit2Settings {
-    //         XmlReport = true,
-    //         NoAppDomain = true,
-    //         OutputDirectory = "."
-    //     }),
-    //     "Coverage.xml",
-    //     new OpenCoverSettings()
-    //         .WithFilter("+[*]* -[xunit.*]* -[*.Tests]*")
-    // );
+     OpenCover(tool => 
+        tool.XUnit2("./**/bin/**/*.Tests.dll", new XUnit2Settings {
+            XmlReport = true,
+            NoAppDomain = true,
+            OutputDirectory = "."
+        }),
+        "Coverage.xml",
+        new OpenCoverSettings()
+            .WithFilter("+[*]* -[xunit.*]* -[*.Tests]*")
+    );
 
-    // if (AppVeyor.IsRunningOnAppVeyor) 
-    // {
-    //     AppVeyor.UploadTestResults("./Cake.SonarScanner.Tests.dll.xml", AppVeyorTestResultsType.XUnit);
-    //     CoverallsIo("Coverage.xml", new CoverallsIoSettings()
-    //     {
-    //         RepoToken = coverallsToken
-    //     });
-    // }
+    if (AppVeyor.IsRunningOnAppVeyor) 
+    {
+        AppVeyor.UploadTestResults("./Cake.SonarScanner.Tests.dll.xml", AppVeyorTestResultsType.XUnit);
+        CoverallsIo("Coverage.xml", new CoverallsIoSettings()
+        {
+            RepoToken = coverallsToken
+        });
+    }
 });
 
 Task("Pack")
@@ -84,9 +84,9 @@ Task("Pack")
         Tags         = new [] {"cake","sonar","sonar-scanner"},
         IconUrl      = new Uri("https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png"),
         Files        = new [] { 
-            new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.dll", Target = "lib/net45" },
-            new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.xml", Target = "lib/net45" },
-            new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.pdb", Target = "lib/net45" }
+            new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.dll", Target = "lib\\net45" },
+            new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.xml", Target = "lib\\net45" },
+            new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.pdb", Target = "lib\\net45" }
         },
         BasePath        = "./",
         OutputDirectory = "./nuget"
