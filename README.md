@@ -12,5 +12,5 @@ Either use [Cake.Chocolatey.Module](https://github.com/gep13/Cake.Chocolatey.Mod
 SonarScanner();
 ```
 
-[![Build status](https://ci.appveyor.com/api/projects/status/1vdj6p5b4d5h6b7v?svg=true)](https://ci.appveyor.com/project/pitermarx/cake-sonarscanner)
+[![Build status](https://ci.appveyor.com/api/projects/status/l00o9jw5cxh68255?svg=true)](https://ci.appveyor.com/project/pitermarx/cake-sonarscanner)
 [![NuGet](https://img.shields.io/nuget/v/Cake.SonarScanner.svg)](https://www.nuget.org/packages/Cake.SonarScanner/)
