@@ -72,6 +72,7 @@ Task("Test")
 });
 
 Task("Analyse")
+    .WithCriteria(AppVeyor.IsRunningOnAppVeyor)
     .IsDependentOn("Test")
     .Does(() => 
 {
