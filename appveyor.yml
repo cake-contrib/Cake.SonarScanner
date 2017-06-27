@@ -3,6 +3,9 @@ environment:
     secure: 0z9yOFGpfQzF7ZsJqzyLj8ckqPIv5FZ7+2TjiCUVR31ewZ7Ah2reiZ9WMubFXwAb
   sonar_scanner_token:
     secure: j37C+cuCWXIWy6s5EsExMaaWFGCa69SUyQ3fgUhqqlK85Wj++dunR6mOUcjn6nI3
+  coveralls_token:
+    secure: VVOOXAEdYKrAaU1QD5kmwed1Xowvgnd80tsHpgmbkhc72iE6j1W0vYNEO2tW4mHM
+
 build_script:
   - ps: .\build.ps1
 
