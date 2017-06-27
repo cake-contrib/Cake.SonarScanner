@@ -9,7 +9,11 @@ Either use [Cake.Chocolatey.Module](https://github.com/gep13/Cake.Chocolatey.Mod
 #addin "nuget:?package=Cake.SonarScanner"
     
 // Assuming a sonar-scanner.properties on the current directory
-SonarScanner();
+SonarScanner(new SonarScannerSettings {
+    Properties = new Dictionary<string, string> {
+        {"sonar.login", EnvironmentVariable("sonar_scanner_token")}
+    }
+});
 ```
 
 [![Build status](https://ci.appveyor.com/api/projects/status/l00o9jw5cxh68255?svg=true)](https://ci.appveyor.com/project/pitermarx/cake-sonarscanner)
