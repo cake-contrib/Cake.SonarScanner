@@ -10,9 +10,12 @@ Parameters.NugetSettings = new NuGetPackSettings
     Tags         = new [] {"cake","sonar","sonar-scanner"},
     IconUrl      = new Uri("https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png"),
     Files        = new [] { 
-        new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.dll", Target = "lib\\net45" },
-        new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.xml", Target = "lib\\net45" },
-        new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.pdb", Target = "lib\\net45" }
+        new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.dll", Target = "lib\\net46" },
+        new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.xml", Target = "lib\\net46" },
+        new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.pdb", Target = "lib\\net46" }
+    },
+    Dependencies = new [] {
+        new NuSpecDependency { Id = "Cake.Core", Version = "0.22.1" }
     }
 };
 
