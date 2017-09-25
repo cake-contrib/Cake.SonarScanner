@@ -4,7 +4,7 @@
 #tool "nuget:?package=OpenCover&version=4.6.519"
 #tool "nuget:?package=coveralls.io&version=1.3.4"
 #addin "nuget:?package=Cake.Coveralls&version=0.7.0"
-#addin "nuget:?package=Cake.SonarScanner&version=0.1.0"
+#addin "nuget:?package=Cake.SonarScanner&version=1.0.0"
 
 public class Parameters
 {
