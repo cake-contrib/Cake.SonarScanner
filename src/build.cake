@@ -15,7 +15,7 @@ Parameters.NugetSettings = new NuGetPackSettings
         new NuSpecContent { Source = "Cake.SonarScanner/bin/Release/Cake.SonarScanner.pdb", Target = "lib\\net46" }
     },
     Dependencies = new [] {
-        new NuSpecDependency { Id = "Cake.Core", Version = "0.22.1" }
+        new NuSpecDependency { Id = "Cake.Core", Version = "0.27.1" }
     }
 };
 
