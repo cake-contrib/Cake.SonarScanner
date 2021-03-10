@@ -36,6 +36,7 @@ namespace Cake.SonarScanner
         [CakeAliasCategory("SonarScanner")]
         public static void SonarScanner(this ICakeContext context)
         {
+            ; // adding a code smell for sonar to catch
             SonarScanner(context, new SonarScannerSettings());
         }
 
