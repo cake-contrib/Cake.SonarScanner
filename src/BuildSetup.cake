@@ -77,7 +77,6 @@ Task("Test")
 
     if (AppVeyor.IsRunningOnAppVeyor)
     {
-        // AppVeyor.UploadTestResults("./" + Parameters.ProjectName + ".Tests.dll.xml", AppVeyorTestResultsType.XUnit);
         if (!string.IsNullOrEmpty(Parameters.CoverallsToken))
         {
             CoverallsIo("TestResults/Coverage.xml", new CoverallsIoSettings()

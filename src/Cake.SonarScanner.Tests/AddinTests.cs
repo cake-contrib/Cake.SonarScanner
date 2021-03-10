@@ -15,7 +15,7 @@ namespace Cake.SonarScanner.Tests
             //act
             var result = Record.Exception(() => fixture.Run());
             //assert
-            Assert.IsType(typeof(NullReferenceException), result);
+            Assert.IsType<NullReferenceException>(result);
         }
 
         [Fact]
