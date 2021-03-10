@@ -1,10 +1,9 @@
-//#tool "nuget:?package=Sonar-Scanner&version=2.8.0&include=./**/*.bat"
 #tool "nuget:?package=xunit.runner.console&version=2.4.1"
 #tool "nuget:?package=GitVersion.CommandLine&version=5.6.6"
 #tool "nuget:?package=OpenCover&version=4.7.922"
 #tool "nuget:?package=coveralls.io&version=1.4.2"
 #addin "nuget:?package=Cake.Coveralls&version=1.0.0"
-//#addin "nuget:?package=Cake.SonarScanner&version=1.0.0"
+#addin "nuget:?package=Cake.SonarScanner&version=2.0.0-alpha0001"
 
 public class Parameters
 {
@@ -88,18 +87,17 @@ Task("Test")
 });
 
 Task("Analyse")
-    .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor && !string.IsNullOrEmpty(Parameters.SonarScannerToken))
-    .IsDependentOn("Test")
+    // .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor && !string.IsNullOrEmpty(Parameters.SonarScannerToken))
+    // .IsDependentOn("Test")
     .Does(() =>
 {
-    /*
      SonarScanner(new SonarScannerSettings {
          Debug = true,
          Properties = new Dictionary<string, string> {
              { "sonar.login", Parameters.SonarScannerToken },
              { "sonar.projectVersion", Parameters.Version }
          }
-     });*/
+     });
 });
 
 Task("Pack")
