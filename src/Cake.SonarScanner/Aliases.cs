@@ -11,7 +11,7 @@ namespace Cake.SonarScanner
     /// #addin "nuget:?package=Cake.SonarScanner"
     /// ]]>
     /// </code>
-    [CakeAliasCategory("SonarScanner")]
+    [CakeAliasCategory("SonarQube")]
     public static class SonarScannerAliases
     {
         /// <summary>
@@ -33,6 +33,7 @@ namespace Cake.SonarScanner
         /// </example>
         /// <param name="context">The context.</param>
         [CakeMethodAlias]
+        [CakeAliasCategory("SonarScanner")]
         public static void SonarScanner(this ICakeContext context)
         {
             SonarScanner(context, new SonarScannerSettings());
@@ -60,6 +61,7 @@ namespace Cake.SonarScanner
         /// <param name="context">The context.</param>
         /// <param name="settings">The SonarScannerSettings</param>
         [CakeMethodAlias]
+        [CakeAliasCategory("SonarScanner")]
         public static void SonarScanner(this ICakeContext context, SonarScannerSettings settings)
         {
             var runner = new SonarScannerTool(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
