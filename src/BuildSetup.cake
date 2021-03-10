@@ -3,7 +3,7 @@
 #tool "nuget:?package=OpenCover&version=4.7.922"
 #tool "nuget:?package=coveralls.io&version=1.4.2"
 #addin "nuget:?package=Cake.Coveralls&version=1.0.0"
-#addin "nuget:?package=Cake.SonarScanner&version=2.0.0-alpha0001"
+#addin "nuget:?package=Cake.SonarScanner&version=2.0.0-alpha0005"
 
 public class Parameters
 {
@@ -91,13 +91,13 @@ Task("Analyse")
     .IsDependentOn("Test")
     .Does(() =>
 {
-    //  SonarScanner(new SonarScannerSettings {
-    //      Debug = true,
-    //      Properties = new Dictionary<string, string> {
-    //          { "sonar.login", Parameters.SonarScannerToken },
-    //          { "sonar.projectVersion", Parameters.Version }
-    //      }
-    //  });
+     SonarScanner(new SonarScannerSettings {
+         Debug = true,
+         Properties = new Dictionary<string, string> {
+             { "sonar.login", Parameters.SonarScannerToken },
+             { "sonar.projectVersion", Parameters.Version }
+         }
+     });
 });
 
 Task("Pack")
