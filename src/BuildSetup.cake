@@ -63,8 +63,12 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() => 
 {
+	/*
      OpenCover(tool => 
-        tool.DotNetCoreTest("./Cake.SonarScanner.Tests/Cake.SonarScanner.Tests.csproj"),
+        tool.*/
+	       DotNetCoreTest("./Cake.SonarScanner.Tests/Cake.SonarScanner.Tests.csproj")
+	       ;
+	/*       ,
         "Coverage.xml",
         new OpenCoverSettings
 		{
@@ -72,18 +76,18 @@ Task("Test")
 			MergeOutput = true,
 			ArgumentCustomization = args => args.Append("-returntargetcode")
 		}.WithFilter("+[*]* -[xunit.*]* -[*.Tests]*")
-    );
+    );*/
 
     if (AppVeyor.IsRunningOnAppVeyor) 
     {
         AppVeyor.UploadTestResults("./" + Parameters.ProjectName + ".Tests.dll.xml", AppVeyorTestResultsType.XUnit);
-        if (!string.IsNullOrEmpty(Parameters.CoverallsToken))
+       /* if (!string.IsNullOrEmpty(Parameters.CoverallsToken))
         {
             CoverallsIo("Coverage.xml", new CoverallsIoSettings()
             {
                 RepoToken = Parameters.CoverallsToken
             });
-        }
+        }*/
     }
 });
 
