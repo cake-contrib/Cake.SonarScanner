@@ -53,7 +53,8 @@ Task("Build")
     .Does(() => 
 {
     MSBuild(Parameters.ProjectName + ".sln", configurator =>
-        configurator
+        configurator        
+            .UseToolVersion(MSBuildToolVersion.VS2019)
             .SetConfiguration(Parameters.Configuration)
             .SetVerbosity(Verbosity.Minimal));
 });
