@@ -1,9 +1,9 @@
 #tool "nuget:?package=Sonar-Scanner&version=2.8.0&include=./**/*.bat"
-#tool "nuget:?package=xunit.runner.console&version=2.1.0"
-#tool "nuget:?package=GitVersion.CommandLine&version=3.6.5"
-#tool "nuget:?package=OpenCover&version=4.6.519"
-#tool "nuget:?package=coveralls.io&version=1.3.4"
-#addin "nuget:?package=Cake.Coveralls&version=0.7.0"
+#tool "nuget:?package=xunit.runner.console&version=2.4.1"
+#tool "nuget:?package=GitVersion.CommandLine&version=5.6.6"
+#tool "nuget:?package=OpenCover&version=4.7.922"
+#tool "nuget:?package=coveralls.io&version=1.4.2"
+#addin "nuget:?package=Cake.Coveralls&version=1.0.0"
 //#addin "nuget:?package=Cake.SonarScanner&version=1.0.0"
 
 public class Parameters
