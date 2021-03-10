@@ -9,7 +9,7 @@ environment:
     secure: VVOOXAEdYKrAaU1QD5kmwed1Xowvgnd80tsHpgmbkhc72iE6j1W0vYNEO2tW4mHM
 
 build_script:
-  - ps: cd .\src; .\build.ps1
+  - ps: cd .\src; .\build.ps1 -d
 
 test: off
 
