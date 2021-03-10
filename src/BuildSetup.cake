@@ -66,8 +66,12 @@ Task("Test")
      OpenCover(tool => 
         tool.DotNetCoreTest("./Cake.SonarScanner.Tests/Cake.SonarScanner.Tests.csproj"),
         "Coverage.xml",
-        new OpenCoverSettings()
-            .WithFilter("+[*]* -[xunit.*]* -[*.Tests]*")
+        new OpenCoverSettings
+		{
+			OldStyle = true,
+			MergeOutput = true,
+			ArgumentCustomization = args => args.Append("-returntargetcode")
+		}.WithFilter("+[*]* -[xunit.*]* -[*.Tests]*")
     );
 
     if (AppVeyor.IsRunningOnAppVeyor) 
