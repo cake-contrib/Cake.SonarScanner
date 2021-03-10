@@ -1,4 +1,4 @@
-#tool "nuget:?package=Sonar-Scanner&version=2.8.0&include=./**/*.bat"
+//#tool "nuget:?package=Sonar-Scanner&version=2.8.0&include=./**/*.bat"
 #tool "nuget:?package=xunit.runner.console&version=2.4.1"
 #tool "nuget:?package=GitVersion.CommandLine&version=5.6.6"
 #tool "nuget:?package=OpenCover&version=4.7.922"
@@ -30,9 +30,10 @@ if (AppVeyor.IsRunningOnAppVeyor) {
 }
 
 Task("Clean")
-    .Does(() => 
+    .Does(() =>
 {
     CleanDirectory("./nuget");
+    CleanDirectory("./TestResults");
     CleanDirectories("./**/bin");
     CleanDirectories("./**/obj");
     if (FileExists("./" + Parameters.ProjectName + ".Tests.dll.xml"))
@@ -41,60 +42,56 @@ Task("Clean")
         DeleteFile("./Coverage.xml");
 });
 
-Task("Restore")
+Task("Build")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    NuGetRestore(Parameters.ProjectName + ".sln");
-});
-
-Task("Build")
-    .IsDependentOn("Restore")
-    .Does(() => 
-{
-    MSBuild(Parameters.ProjectName + ".sln", configurator =>
-        configurator        
-            .UseToolVersion(MSBuildToolVersion.VS2019)
-            .SetConfiguration(Parameters.Configuration)
-            .SetVerbosity(Verbosity.Minimal));
+    DotNetCoreBuild(Parameters.ProjectName + ".sln", new DotNetCoreBuildSettings
+    {
+        Configuration = Parameters.Configuration,
+    });
 });
 
 Task("Test")
     .IsDependentOn("Build")
-    .Does(() => 
+    .Does(() =>
 {
-	/*
-     OpenCover(tool => 
-        tool.*/
-	       DotNetCoreTest("./Cake.SonarScanner.Tests/Cake.SonarScanner.Tests.csproj")
-	       ;
-	/*       ,
-        "Coverage.xml",
+     OpenCover(tool =>
+        tool.
+	       DotNetCoreTest("./Cake.SonarScanner.Tests/Cake.SonarScanner.Tests.csproj", new DotNetCoreTestSettings
+           {
+                Configuration = "Debug",
+                ResultsDirectory = "TestResults",
+                NoLogo = true,
+                NoRestore = true
+           }),
+        "TestResults/Coverage.xml",
         new OpenCoverSettings
 		{
 			OldStyle = true,
 			MergeOutput = true,
-			ArgumentCustomization = args => args.Append("-returntargetcode")
+			ArgumentCustomization = args => args.Append("-returntargetcode"),
+            Register = ""
 		}.WithFilter("+[*]* -[xunit.*]* -[*.Tests]*")
-    );*/
+    );
 
-    if (AppVeyor.IsRunningOnAppVeyor) 
+    if (AppVeyor.IsRunningOnAppVeyor)
     {
-        AppVeyor.UploadTestResults("./" + Parameters.ProjectName + ".Tests.dll.xml", AppVeyorTestResultsType.XUnit);
-       /* if (!string.IsNullOrEmpty(Parameters.CoverallsToken))
+        // AppVeyor.UploadTestResults("./" + Parameters.ProjectName + ".Tests.dll.xml", AppVeyorTestResultsType.XUnit);
+        if (!string.IsNullOrEmpty(Parameters.CoverallsToken))
         {
-            CoverallsIo("Coverage.xml", new CoverallsIoSettings()
+            CoverallsIo("TestResults/Coverage.xml", new CoverallsIoSettings()
             {
                 RepoToken = Parameters.CoverallsToken
             });
-        }*/
+        }
     }
 });
 
 Task("Analyse")
     .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor && !string.IsNullOrEmpty(Parameters.SonarScannerToken))
     .IsDependentOn("Test")
-    .Does(() => 
+    .Does(() =>
 {
     /*
      SonarScanner(new SonarScannerSettings {
@@ -126,13 +123,13 @@ Task("Publish")
     var file = GetFiles("**/*.nupkg").First();
     AppVeyor.UploadArtifact(file);
 
-    var tagged = AppVeyor.Environment.Repository.Tag.IsTag && 
+    var tagged = AppVeyor.Environment.Repository.Tag.IsTag &&
         !string.IsNullOrWhiteSpace(AppVeyor.Environment.Repository.Tag.Name);
 
     if (tagged)
-    { 
+    {
         // Push the package.
-        NuGetPush(file, new NuGetPushSettings 
+        NuGetPush(file, new NuGetPushSettings
         {
             Source = "https://www.nuget.org/api/v2/package",
             ApiKey = Parameters.NugetApiToken
