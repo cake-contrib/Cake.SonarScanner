@@ -91,13 +91,13 @@ Task("Analyse")
     // .IsDependentOn("Test")
     .Does(() =>
 {
-     SonarScanner(new SonarScannerSettings {
-         Debug = true,
-         Properties = new Dictionary<string, string> {
-             { "sonar.login", Parameters.SonarScannerToken },
-             { "sonar.projectVersion", Parameters.Version }
-         }
-     });
+    //  SonarScanner(new SonarScannerSettings {
+    //      Debug = true,
+    //      Properties = new Dictionary<string, string> {
+    //          { "sonar.login", Parameters.SonarScannerToken },
+    //          { "sonar.projectVersion", Parameters.Version }
+    //      }
+    //  });
 });
 
 Task("Pack")

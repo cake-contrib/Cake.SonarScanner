@@ -23,7 +23,7 @@ namespace Cake.SonarScanner
 
         protected sealed override IEnumerable<string> GetToolExecutableNames()
         {
-            return new[] { "sonar-scanner.bat", "sonar-scanner" };
+            return new[] { "sonar-scanner.bat", "sonar-scanner.exe", "sonar-scanner" };
         }
 
         protected internal void RunSonarScanner(SonarScannerSettings settings)
