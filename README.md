@@ -1,7 +1,8 @@
 # Cake.SonarScanner
 
 ## Pre requisites
-Either use [Cake.Chocolatey.Module](https://github.com/gep13/Cake.Chocolatey.Module) or ensure [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) is on your path
+Ensure [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) is on your path
+Suggestion: use chocolatey. https://chocolatey.org/packages/sonarqube-scanner.portable
 
 ## Usage
 ```cs
@@ -15,6 +16,9 @@ SonarScanner(new SonarScannerSettings {
     }
 });
 ```
+
+## Important
+.net projects should use the MSBuild scanner for SonarQube. See https://github.com/AgileArchitect/Cake.Sonar
 
 [![Build status](https://ci.appveyor.com/api/projects/status/l00o9jw5cxh68255?svg=true)](https://ci.appveyor.com/project/pitermarx/cake-sonarscanner)
 [![NuGet](https://img.shields.io/nuget/v/Cake.SonarScanner.svg)](https://www.nuget.org/packages/Cake.SonarScanner/)
