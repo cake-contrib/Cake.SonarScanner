@@ -87,8 +87,8 @@ Task("Test")
 });
 
 Task("Analyse")
-    // .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor && !string.IsNullOrEmpty(Parameters.SonarScannerToken))
-    // .IsDependentOn("Test")
+    .WithCriteria(() => AppVeyor.IsRunningOnAppVeyor && !string.IsNullOrEmpty(Parameters.SonarScannerToken))
+    .IsDependentOn("Test")
     .Does(() =>
 {
     //  SonarScanner(new SonarScannerSettings {
