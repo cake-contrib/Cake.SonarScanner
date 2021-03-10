@@ -23,7 +23,7 @@ Parameters.Configuration = Argument("configuration", "Release");
 Parameters.SonarScannerToken = EnvironmentVariable("sonar_scanner_token");
 Parameters.NugetApiToken = EnvironmentVariable("nuget_api_token");
 Parameters.CoverallsToken = EnvironmentVariable("coveralls_token");
-Parameters.Version = GitVersion(new GitVersionSettings { UpdateAssemblyInfo = true }).NuGetVersionV2;
+Parameters.Version = GitVersion().NuGetVersionV2;
 
 if (AppVeyor.IsRunningOnAppVeyor) {
     AppVeyor.UpdateBuildVersion(Parameters.Version);
