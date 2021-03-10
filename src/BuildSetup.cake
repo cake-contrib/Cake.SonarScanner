@@ -64,11 +64,7 @@ Task("Test")
     .Does(() => 
 {
      OpenCover(tool => 
-        tool.XUnit2("./**/bin/**/*.Tests.dll", new XUnit2Settings {
-            XmlReport = true,
-            NoAppDomain = true,
-            OutputDirectory = "."
-        }),
+        tool.DotNetCoreTest("./Cake.SonarScanner.Tests/Cake.SonarScanner.Tests.csproj"),
         "Coverage.xml",
         new OpenCoverSettings()
             .WithFilter("+[*]* -[xunit.*]* -[*.Tests]*")
